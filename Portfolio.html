@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aastha Kumar • Portfolio</title>
+  <meta name="description" content="Portfolio of Aastha Kumar — data science student & full-stack intern. Projects in NLP, dashboards, forecasting, and risk analytics." />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter","system-ui","-apple-system","Segoe UI","Roboto","Arial","sans-serif"] },
+          colors: {
+            brand: { 50:"#ecfeff", 100:"#cffafe", 500:"#06b6d4", 600:"#0891b2", 700:"#0e7490" },
+            accent: { pink:"#ec4899", purple:"#8b5cf6", yellow:"#facc15" }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* App background (light & dark) */
+    .bg-app {
+      background:
+        radial-gradient(900px 900px at 10% 10%, rgba(14, 182, 212, .15), transparent 60%),
+        radial-gradient(800px 800px at 90% 20%, rgba(139, 92, 246, .15), transparent 55%),
+        linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+    }
+    .dark .bg-app {
+      background:
+        radial-gradient(900px 900px at 0% 0%, rgba(8, 145, 178, .25), transparent 50%),
+        radial-gradient(800px 800px at 100% 0%, rgba(139, 92, 246, .2), transparent 55%),
+        linear-gradient(180deg, #0b1220 0%, #0b1220 100%);
+    }
+
+    /* Cards + subtle motion */
+    .card { border-radius: 1.1rem; box-shadow: 0 8px 24px rgb(2 6 23 / 0.08); transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgb(2 6 23 / 0.12); }
+
+    /* Gradient text utility */
+    .gradient-text {
+      background-image: linear-gradient(to right, #06b6d4, #8b5cf6, #ec4899);
+      -webkit-background-clip: text; background-clip: text;
+      color: transparent; /* cross-browser fallback for gradient text */
+    }
+
+    .glass { backdrop-filter: blur(8px); background: color-mix(in oklab, white 70%, transparent); }
+    .dark .glass { background: color-mix(in oklab, #0b1220 70%, transparent); }
+  </style>
+</head>
+
+<body class="bg-app text-slate-800 dark:text-slate-100 font-sans min-h-screen">
+  <!-- Navigation -->
+  <header class="sticky top-0 z-50 border-b border-slate-200/70 dark:border-slate-800/70 bg-white/75 dark:bg-slate-950/60 glass">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="#home" class="font-extrabold tracking-tight text-xl gradient-text">AasthaKumar</a>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+          <a href="#about" class="hover:text-brand-600">About</a>
+          <a href="#skills" class="hover:text-accent-pink">Skills</a>
+          <a href="#experience" class="hover:text-accent-purple">Experience</a>
+          <a href="#projects" class="hover:text-brand-600">Projects</a>
+          <a href="#education" class="hover:text-accent-yellow">Education</a>
+          <a href="#contact" class="hover:text-accent-pink">Contact</a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <button id="themeToggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800" title="Toggle theme">
+            <i data-lucide="moon" class="w-5 h-5"></i>
+          </button>
+          <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-brand-500 via-accent-purple to-accent-pink hover:opacity-90 text-white text-sm font-semibold shadow-md">
+            <i data-lucide="send"></i> Hire Me
+          </a>
+          <button id="menuBtn" class="md:hidden p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open Menu">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90">
+      <nav class="max-w-6xl mx-auto px-4 py-3 grid gap-2 text-sm">
+        <a class="py-2" href="#about">About</a>
+        <a class="py-2" href="#skills">Skills</a>
+        <a class="py-2" href="#experience">Experience</a>
+        <a class="py-2" href="#projects">Projects</a>
+        <a class="py-2" href="#education">Education</a>
+        <a class="py-2" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 pt-20 pb-16">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight gradient-text">
+            Data Science Student &<br class="hidden sm:block"/> Full-Stack Intern
+          </h1>
+          <p class="mt-4 text-lg text-slate-700 dark:text-slate-300 max-w-prose">
+            I build data-driven apps, dashboards, and models that turn messy inputs into crisp, actionable insights.
+            Based in Delhi, India.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="resume.pdf" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-brand-600 to-accent-pink hover:opacity-90 text-white font-semibold shadow">
+              <i data-lucide="download"></i> Download Résumé
+            </a>
+            <a href="#projects" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-slate-300 dark:border-slate-700 hover:bg-accent-yellow/20 font-semibold">
+              <i data-lucide="rocket"></i> View Projects
+            </a>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="card bg-white/90 dark:bg-slate-900/80 p-6 border border-slate-200 dark:border-slate-800">
+            <h3 class="text-sm font-semibold text-brand-700 dark:text-brand-300">Quick Stats</h3>
+            <ul class="mt-3 grid grid-cols-2 gap-4 text-sm">
+              <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> Delhi, India</li>
+              <li class="flex items-center gap-2"><i data-lucide="graduation-cap" class="w-4 h-4"></i> NIIT University</li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="github" class="w-4 h-4"></i>
+                <a class="underline hover:no-underline" href="https://github.com/AasthaK24" target="_blank" rel="noopener">GitHub</a>
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                <a class="underline hover:no-underline" href="https://www.linkedin.com/in/aastha-kumar-ab050524a/" target="_blank" rel="noopener">LinkedIn</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8 items-start">
+        <div class="md:col-span-1">
+          <h2 class="text-2xl font-extrabold tracking-tight">About</h2>
+        </div>
+        <div class="md:col-span-2 prose dark:prose-invert max-w-none">
+          <p>
+            Data science student with experience in data analysis, visualization, and dashboard creation. I've worked on
+            real-time data processing and web scraping to generate actionable insights, and I aim to build a career as a
+            data analyst creating impactful business solutions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="py-16 bg-gradient-to-r from-brand-50 via-white to-pink-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-extrabold tracking-tight">Skills</h2>
+      <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <h3 class="font-semibold flex items-center gap-2"><i data-lucide="code"></i> Programming Languages</h3>
+          <p class="mt-2 text-sm">Python, SQL, R</p>
+        </div>
+        <div class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <h3 class="font-semibold flex items-center gap-2"><i data-lucide="library"></i> Frameworks & Libraries</h3>
+          <p class="mt-2 text-sm">Streamlit, Plotly, VADER, TextBlob, Prophet</p>
+        </div>
+        <div class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <h3 class="font-semibold flex items-center gap-2"><i data-lucide="database"></i> Databases</h3>
+          <p class="mt-2 text-sm">MongoDB, MySQL</p>
+        </div>
+        <div class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <h3 class="font-semibold flex items-center gap-2"><i data-lucide="bar-chart-3"></i> BI & Visualization</h3>
+          <p class="mt-2 text-sm">Power BI, Tableau, Excel</p>
+        </div>
+        <div class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <h3 class="font-semibold flex items-center gap-2"><i data-lucide="docker"></i> DevOps & Version Control</h3>
+          <p class="mt-2 text-sm">Docker, GitHub</p>
+        </div>
+        <div class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <h3 class="font-semibold flex items-center gap-2"><i data-lucide="brain"></i> Interests</h3>
+          <p class="mt-2 text-sm">NLP, Forecasting, Risk Analytics</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-extrabold tracking-tight">Experience</h2>
+      <ol class="mt-6 relative border-s-l border-slate-200 dark:border-slate-800 ms-3">
+        <li class="mb-10 ms-6">
+          <span class="absolute -start-3.5 flex h-7 w-7 items-center justify-center rounded-full bg-brand-600 text-white">
+            <i data-lucide="briefcase" class="w-4 h-4"></i>
+          </span>
+          <div class="card p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="font-semibold">React Full-Stack Intern • Overhyped AI Marketing Pvt. Ltd. (Remote)</h3>
+              <span class="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Jul 2025 – Aug 2025</span>
+            </div>
+            <ul class="mt-3 text-sm list-disc ps-5 space-y-2">
+              <li>Built and optimized front-end features in React & Next.js for an AI e-commerce platform.</li>
+              <li>Implemented scalable state management with Zustand in a monorepo; integrated multiple apps/services.</li>
+              <li>Built Flask-based real-time servers using SSE for live updates.</li>
+              <li>Collaborated on product architecture, integrations, and engineering best practices.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="ms-6">
+          <span class="absolute -start-3.5 flex h-7 w-7 items-center justify-center rounded-full bg-brand-600 text-white">
+            <i data-lucide="briefcase" class="w-4 h-4"></i>
+          </span>
+          <div class="card p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <h3 class="font-semibold">Data Scientist Intern • Evoastra Ventures (Remote)</h3>
+              <span class="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Jul 2025 – Aug 2025</span>
+            </div>
+            <ul class="mt-3 text-sm list-disc ps-5 space-y-2">
+              <li>Scraped automotive listings (Selenium & static parsing) and ran EDA on car datasets.</li>
+              <li>Implemented deep-learning image captioning (InceptionV3 + LSTM); optimized with Adam; evaluated via BLEU.</li>
+              <li>Presented findings to stakeholders and documented project workflows.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-16 bg-gradient-to-r from-pink-50 via-white to-brand-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="text-2xl font-extrabold tracking-tight">Projects</h2>
+        <a href="https://github.com/AasthaK24" target="_blank" rel="noopener" class="text-sm underline hover:no-underline">See all on GitHub</a>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <!-- Project 1 -->
+        <article class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <div class="flex items-center gap-2 text-xs font-semibold tracking-wide text-brand-700 dark:text-brand-300">
+            <i data-lucide="activity" class="w-4 h-4"></i> Real-time NLP
+          </div>
+          <h3 class="mt-2 text-lg font-semibold">SOCIAL CUBES: Crisis Detection Dashboard</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Real-time sentiment monitoring for Reddit/Twitter to detect emerging crises.</p>
+          <p class="mt-2 text-xs">Tech: Streamlit, Python, TextBlob, Reddit API, Twitter API, VADER</p>
+        </article>
+        <!-- Project 2 -->
+        <article class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <div class="flex items-center gap-2 text-xs font-semibold tracking-wide text-brand-700 dark:text-brand-300">
+            <i data-lucide="line-chart" class="w-4 h-4"></i> Finance / Risk
+          </div>
+          <h3 class="mt-2 text-lg font-semibold">RISKOS: Portfolio Risk Analysis App</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Full-stack dashboard for VaR & CVaR on NIFTY50/Sensex portfolios.</p>
+          <p class="mt-2 text-xs">Tech: Flask, React, Yahoo Finance API</p>
+        </article>
+        <!-- Project 3 -->
+        <article class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <div class="flex items-center gap-2 text-xs font-semibold tracking-wide text-brand-700 dark:text-brand-300">
+            <i data-lucide="package" class="w-4 h-4"></i> Forecasting
+          </div>
+          <h3 class="mt-2 text-lg font-semibold">Supply Chain Forecasting</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Inventory demand forecasting system for supply-chain operations.</p>
+          <p class="mt-2 text-xs">Tech: Prophet, Power BI, Excel</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-extrabold tracking-tight">Education</h2>
+      <div class="mt-6 card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h3 class="font-semibold">NIIT University — Integrated M.Sc. Computer Science</h3>
+          <span class="text-xs px-2 py-1 rounded-full bg-slate-100 dark:bg-slate-800">Aug 2022 – Present</span>
+        </div>
+        <p class="mt-2 text-sm">Specialization: Data Science • Minor: Business Analytics</p>
+        <p class="mt-2 text-sm">Positions Held: Teaching Assistant; Sponsorship Director — Hult Prize NIIT</p>
+        <p class="mt-2 text-sm">Achievement: Presented research at ICNCDA-2025 — “The Psychology of Fonts: How Typeface Influences Perception and Cognition”.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-2xl font-extrabold tracking-tight">Contact</h2>
+      <div class="mt-6 grid sm:grid-cols-2 gap-6">
+        <div class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <h3 class="font-semibold flex items-center gap-2"><i data-lucide="mail"></i> Email</h3>
+          <div class="mt-2 flex items-center gap-3 text-sm">
+            <a id="emailLink" class="underline hover:no-underline" href="mailto:aasthakumar04@gmail.com">aasthakumar04@gmail.com</a>
+            <button id="copyEmail" class="text-xs px-2 py-1 rounded-full border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800">Copy</button>
+          </div>
+        </div>
+        <div class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <h3 class="font-semibold flex items-center gap-2"><i data-lucide="phone"></i> Phone</h3>
+          <p class="mt-2 text-sm">+91 9205514667</p>
+        </div>
+        <a href="https://www.linkedin.com/in/aastha-kumar-ab050524a/" target="_blank" rel="noopener" class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 block">
+          <h3 class="font-semibold flex items-center gap-2"><i data-lucide="linkedin"></i> LinkedIn</h3>
+          <p class="mt-2 text-sm">Connect on LinkedIn</p>
+        </a>
+        <a href="https://github.com/AasthaK24" target="_blank" rel="noopener" class="card p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 block">
+          <h3 class="font-semibold flex items-center gap-2"><i data-lucide="github"></i> GitHub</h3>
+          <p class="mt-2 text-sm">Browse my repositories</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-8 text-center text-sm text-slate-600 dark:text-slate-400">
+    © <span id="year"></span> Aastha Kumar • Built with ❤ and Tailwind
+  </footer>
+
+  <script>
+    // Icons
+    lucide.createIcons();
+
+    // Theme toggle (persist)
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && prefersDark)) {
+      root.classList.add('dark');
+    }
+    themeToggle.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.theme = root.classList.contains('dark') ? 'dark' : 'light';
+      lucide.createIcons();
+    });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // Copy email
+    const copyEmail = document.getElementById('copyEmail');
+    copyEmail?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('aasthakumar04@gmail.com');
+        copyEmail.textContent = 'Copied!';
+        setTimeout(() => (copyEmail.textContent = 'Copy'), 1200);
+      } catch {}
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
